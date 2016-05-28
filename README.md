@@ -5,4 +5,4 @@ EduX is Company X's new app for student education. Students complete lessons and
 
 ## Set up
 
-This is a reasonably standard Rails application in terms of set up. We use `rbenv` to manage ruby versions. Install `bundler` if you haven't already, then then `bundle install` to install all the required gems. Use `rake test` or `bundle exec guard` to run the tests.
+This is a reasonably standard Rails application in terms of set up. We use `rbenv` to manage ruby versions. Install `bundler` if you haven't already, then `bundle install` to install all the required gems. Use `rake test` or `bundle exec guard` to run the tests.
