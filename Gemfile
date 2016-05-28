@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.3.0"
+ruby "2.3.1"
 
 gem 'rails', '4.2.6'
 gem 'sqlite3'
@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :test do
   gem 'minitest-rails-capybara', '~> 2.1.0'
+  gem 'minitest-reporters', '~> 1.1.0'
 end
 
 group :development, :test do
@@ -22,4 +23,6 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'guard', '~> 2.14.0'
+  gem 'guard-minitest', '~> 2.4.0'
 end
