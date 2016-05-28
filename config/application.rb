@@ -36,5 +36,9 @@ module Edux
     config.generators do |g|
       g.test_framework :minitest, spec: true
     end
+
+    # include roles and contexts folders
+    config.autoload_paths += [Rails.root.join('app', 'contexts'),
+                              Rails.root.join('app', 'roles')]
   end
 end

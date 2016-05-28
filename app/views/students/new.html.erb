@@ -1,0 +1,14 @@
+<h2>New Student Registration</h2>
+
+<p>
+  Please fill in the following form to register:
+</p>
+
+<%= form_for @student, url: {action: "create"} do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, :id => 'first_name' %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, :id => 'last_name' %>
+  <%= f.submit "Register" %>
+<% end %>
