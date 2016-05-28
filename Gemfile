@@ -11,6 +11,10 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+group :test do
+  gem 'minitest-rails-capybara', '~> 2.1.0'
+end
+
 group :development, :test do
   gem 'byebug'
 end
@@ -19,4 +23,3 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-
