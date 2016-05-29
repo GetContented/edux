@@ -14,5 +14,6 @@ feature "Student Registration" do
     fill_in "first_name", with: "First"
     fill_in "last_name", with: "Last"
     click_on "Register"
+    page.must_have_content "First Last"
   end
 end
