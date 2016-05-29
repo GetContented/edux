@@ -45,9 +45,9 @@ describe StudentsController do
       must_render_template "students/unknown"
     end
 
-    it "responds with success for unknown user" do
+    it "responds with 404 for unknown user" do
       get :show, {id: @it.id + 1000}
-      must_respond_with :success
+      must_respond_with 404
     end
 
     it "renders students/show" do
@@ -58,6 +58,26 @@ describe StudentsController do
     it "responds with success for known user" do
       get :show, {id: @it.id}
       must_respond_with :success
+    end
+
+    describe "with JSON" do
+      it "responds with success for known user" do
+        get :show, {id: @it.id, format: :json}
+        must_respond_with :success
+      end
+
+      it "responds with 404 for unknown user" do
+        get :show, {id: @it.id + 1000, format: :json}
+        must_respond_with 404
+      end
+
+      it "has student's name and progress for known user" do
+        @it = User.create(first_name: "first", last_name: "last")
+        @it.create_student_record(lesson: 5, part: 2)
+        get :show, {id: @it.id, format: :json}
+        response.body.must_include "first last"
+        response.body.must_include "L5 P2"
+      end
     end
   end
   describe "GET edit" do

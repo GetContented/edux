@@ -40,7 +40,10 @@ class StudentsController < ApplicationController
     if(user)
       @student = Student.new(user)
     else
-      render template: "students/unknown"
+      respond_to do |format|
+        format.html { render template: "students/unknown", status: 404 }
+        format.json { render json: { error: "Unknown Student" }.to_json, status: 404}
+      end
     end
   end
 end
