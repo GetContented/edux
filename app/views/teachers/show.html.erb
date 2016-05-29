@@ -2,6 +2,18 @@
 
 <p>
   This page shows the information for the teacher <%= @teacher.full_name %>.
-  You may <%= link_to "Return", teachers_url %> to the teachers portal.
+  You may <%= link_to "Return", teachers_url %> to the teachers portal. Here are the classes:
 </p>
+<ul>
+  <% for student_class in @teacher.student_classes %>
+    <li>
+      <%= student_class.name %>
+      <ul>
+        <% for student in student_class.students %>
+          <li><%= student.full_name %></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
 

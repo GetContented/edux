@@ -35,7 +35,7 @@ class StudentsController < ApplicationController
   private
 
   def set_student_or_render_unknown
-    user = User.find_by_id(params[:id])
+    user = User.where(id: params[:id], is_teacher: false).first
     if(user)
       @student = user.extend Student
     else

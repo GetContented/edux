@@ -2,7 +2,7 @@ class TeachersController < ApplicationController
   def index
   end
   def show
-    user = User.find_by_id(params[:id])
+    user = User.where(id: params[:id], is_teacher: true).first
     if(user)
       @teacher = user.extend Teacher
     else

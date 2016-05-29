@@ -35,6 +35,7 @@ describe StudentsController do
     end
   end
   describe "GET show" do
+    let(:teacher) { User.create(first_name: "Terry", last_name: "Eacher", is_teacher: true).extend(Teacher) }
     before do
       @it = User.create(first_name: "first", last_name: "last")
       @it.create_student_record
@@ -48,6 +49,11 @@ describe StudentsController do
     it "responds with 404 for unknown user" do
       get :show, {id: @it.id + 1000}
       must_respond_with 404
+    end
+
+    it "renders students/unknown for known teacher user" do
+      get :show, {id: teacher.id }
+      must_render_template "students/unknown"
     end
 
     it "renders students/show for known user" do
