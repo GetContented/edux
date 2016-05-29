@@ -2,7 +2,7 @@
 
 EduX is Company X's new app for student education. Students complete lessons and their progress is recorded. Each lesson has 3 parts - 1, 2 and 3. There are 100 lessons in total.
 
-## Environments and Requirements
+## Environments and System Requirements
 
 This application was developed with MacOS X El Capitan (10.11.5). It uses Rails 4.2.6 and Ruby (MRI) 2.3.1. Application developed with SQLite.
 
