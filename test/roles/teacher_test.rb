@@ -8,7 +8,7 @@ end
 
 describe Teacher do
   let(:user) { UserDummy.new }
-  let(:student) { Student.new(UserDummy.new) }
+  let(:student) { UserDummy.new.extend(Student) }
   subject { user.extend Teacher }
 
   it "can be instantiated" do
