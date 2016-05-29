@@ -8,7 +8,7 @@ This application was developed with MacOS X El Capitan (10.11.5). It uses Rails 
 
 ## Set up
 
-This is a reasonably standard Rails application in terms of set up. Use git to check it out of the repo, then I used `rbenv` to manage ruby versions. Install `bundler` if you haven't already, then `bundle install` to install all the required gems. Make sure you migrate the database before you begin with `rake db:migrate` and as usual, to run the server: `rails s`.
+This is a reasonably standard Rails application in terms of set up. Use git to check out a copy of the repo, then I used `rbenv` to manage ruby versions. Install `bundler` if you haven't already, then `bundle install` to install all the required gems. Make sure you migrate the database before you begin with `rake db:migrate` and as usual, to run the server: `rails s`.
 
 ## Testing
 
