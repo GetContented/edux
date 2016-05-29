@@ -16,11 +16,13 @@ EduX uses MiniTest for unit tests and MiniTest::Capybara for acceptance tests. Y
 
 ## Overview
 
+This repo has three tags on it, representing the three parts of the requirements of the exercise, as can be found in the doc folder under `client_requirements.md`.
+
 The application allows you to register students (which creates them). It has navigation on the root of the application to both a students and a teachers section. Routes are fairly standard Rails `resource` routes for resources named `teachers` and `students`. The show route for teachers shows the report, and the show route for the student shows the student and their progress. Requesting JSON as a format or extension for the student's show route will render the JSON version of it.
 
 The application's requirements didn't include much front end development, just a JSON feed, a way to progress the student on, and a reporting page to view progress as a teacher. Evidently this elides any ability to create students or teachers from within the application (or at least, it was assumed to be implicit, I'm not sure).
 
-I added a student "registration" feature as well because it seemed useful. I didn't have enough time to do a full navigation mechanism, and I wasn't sure if doing one would be a good thing to do as it wasn't in the requirements. Though, if I was doing this for an actual stakeholder I would have raised that as an issue straight away upfront.
+I added a student "registration" feature as well because it seemed useful. I didn't have enough time to do a full navigation mechanism, and I wasn't sure if doing one would be a good thing to do as it wasn't in the requirements. However, I did put partial navigation in. If time permits, I can happily add more navigation. Though, if I was doing this for an actual stakeholder I would have raised that as an issue straight away upfront.
 
 Security: This is a concern, but obviously for the scope of this project (ie an example) it's not a concern at all. In a real application, I'd raise this as an issue immediately, as well as putting non-sequential student and teacher tokens / identifiers in place so URLs are not guessable.
 
