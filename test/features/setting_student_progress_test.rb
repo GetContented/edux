@@ -3,8 +3,9 @@ require 'test_helper'
 feature "Setting Student Progress" do
   before do
     user = User.create(first_name: "Stuart", last_name: "Dent")
+    user.extend Student
     user.create_student_record
-    @it = Student.new(user)
+    @it = user
   end
   scenario "visiting the show page for a non-existing student shows an 'unknown student' message" do
     visit student_path("None")

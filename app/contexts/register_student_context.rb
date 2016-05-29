@@ -6,8 +6,9 @@ class RegisterStudentContext
   end
 
   def initialize(user)
-    student_record = user.build_student_record
-    @student = Student.new(user, student_record)
+    student = user.extend Student
+    student.build_student_record
+    @student = student
   end
 
   def call

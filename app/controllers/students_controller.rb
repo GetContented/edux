@@ -3,8 +3,7 @@ class StudentsController < ApplicationController
   end
 
   def new
-    user = User.new
-    @student = Student.new(user, user.build_student_record)
+    @student = User.new().extend Student
   end
 
   def create
@@ -38,7 +37,7 @@ class StudentsController < ApplicationController
   def set_student_or_render_unknown
     user = User.find_by_id(params[:id])
     if(user)
-      @student = Student.new(user)
+      @student = user.extend Student
     else
       respond_to do |format|
         format.html { render template: "students/unknown", status: 404 }

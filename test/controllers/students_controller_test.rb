@@ -50,7 +50,7 @@ describe StudentsController do
       must_respond_with 404
     end
 
-    it "renders students/show" do
+    it "renders students/show for known user" do
       get :show, {id: @it.id}
       must_render_template "students/show"
     end

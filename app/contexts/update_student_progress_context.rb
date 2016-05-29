@@ -6,7 +6,7 @@ class UpdateStudentProgressContext
   end
 
   def initialize(user, progress)
-    @student = Student.new(user)
+    @student = user.extend Student
     @progress = progress
   end
 
