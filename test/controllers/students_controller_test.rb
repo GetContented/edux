@@ -102,7 +102,7 @@ describe StudentsController do
       must_render_template "students/unknown"
     end
   end
-  describe "PUT update" do
+  describe "PATCH update" do
     before do
       @it = User.create(first_name: "first", last_name: "last")
       @it.create_student_record
