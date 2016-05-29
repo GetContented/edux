@@ -6,10 +6,12 @@ class RegisterStudentContext
   end
 
   def initialize(user)
-    @student = Student.new(user)
+    student_record = user.build_student_record
+    @student = Student.new(user, student_record)
   end
 
   def call
-    student.register!
+    @student.register!
+    @student
   end
 end

@@ -1,9 +1,10 @@
 require 'test_helper'
 require 'ostruct'
 
-describe RegisterStudentContext do
+describe UpdateStudentProgressContext do
   let(:user) { OpenStruct.new(student_record: OpenStruct.new) }
-  subject { RegisterStudentContext.new(user) }
+  let(:progress) { OpenStruct.new }
+  subject { UpdateStudentProgressContext.new(user, progress) }
 
   it "can be instantiated" do
     subject.wont_be_nil

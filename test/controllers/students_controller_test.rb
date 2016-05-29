@@ -30,8 +30,66 @@ describe StudentsController do
   describe "POST create" do
     it "creates a new user" do
       assert_difference('User.count') do
-        post :create, user: {first_name: "first", last_name: "last"}
+        post :create, student: {first_name: "first", last_name: "last"}
       end
+    end
+  end
+  describe "GET show" do
+    before do
+      @it = User.create(first_name: "first", last_name: "last")
+      @it.create_student_record
+    end
+
+    it "renders students/unknown for unknown user" do
+      get :show, {id: @it.id + 1000}
+      must_render_template "students/unknown"
+    end
+
+    it "responds with success for unknown user" do
+      get :show, {id: @it.id + 1000}
+      must_respond_with :success
+    end
+
+    it "renders students/show" do
+      get :show, {id: @it.id}
+      must_render_template "students/show"
+    end
+
+    it "responds with success for known user" do
+      get :show, {id: @it.id}
+      must_respond_with :success
+    end
+  end
+  describe "GET edit" do
+    before do
+      @it = User.create(first_name: "first", last_name: "last")
+      @it.create_student_record
+    end
+
+    it "renders students/edit for known user" do
+      get :edit, {id: @it.id}
+      must_render_template "students/edit"
+    end
+
+    it "renders students/unknown for unknown user" do
+      get :edit, {id: @it.id + 1000}
+      must_render_template "students/unknown"
+    end
+  end
+  describe "PUT update" do
+    before do
+      @it = User.create(first_name: "first", last_name: "last")
+      @it.create_student_record
+    end
+
+    it "updates a known user" do
+      patch :update, id: @it.id, student: {progress_lesson: 1, progress_part: 2}
+      must_redirect_to student_url(@it)
+    end
+
+    it "renders students/unknown for unknown user" do
+      patch :update, id: @it.id + 1000, student: {progress_lesson: 1, progress_part: 2}
+      must_render_template "students/unknown"
     end
   end
 end

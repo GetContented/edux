@@ -1,0 +1,15 @@
+<h2>Student Progress Update</h2>
+
+<p>
+  Please indicate the progress the student has made:
+</p>
+
+<%= form_for @student, {url: {action: "update"}, method: :put} do |f| %>
+  <%= @student.full_name %>
+
+  <%= f.label :progress %>
+  <%= f.select :progress_lesson, lessons, {}, {:id => 'progress_lesson'} %>
+  <%= f.select :progress_part, parts, {}, {:id => 'progress_part'} %>
+
+  <%= f.submit "Update" %>
+<% end %>
