@@ -4,7 +4,7 @@ feature "Setting Student Progress" do
   before do
     user = User.create(first_name: "Stuart", last_name: "Dent")
     user.extend Student
-    user.create_student_record
+    user.create_student_record(lesson: 1, part: 1)
     @it = user
   end
   scenario "visiting the show page for a non-existing student shows an 'unknown student' message" do
@@ -30,5 +30,14 @@ feature "Setting Student Progress" do
     select "P2", from: "progress_part"
     click_on "Update"
     page.must_have_content "L1 P2"
+  end
+  scenario "updating the student progress beyond the next step fails" do
+    visit edit_student_path(@it)
+    @it.student_record.update_attributes(lesson: 1, part: 1)
+    select "L1", from: "progress_lesson"
+    select "P3", from: "progress_part"
+    click_on "Update"
+    page.must_have_content "L1 P1"
+    page.must_have_content "You can only proceed to the next part."
   end
 end

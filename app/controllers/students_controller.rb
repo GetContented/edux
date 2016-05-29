@@ -17,7 +17,8 @@ class StudentsController < ApplicationController
     user = User.find_by_id(params[:id])
     if(user)
       progress = OpenStruct.new(lesson: params[:student][:progress_lesson], part: params[:student][:progress_part])
-      @student = UpdateStudentProgressContext.call(user, progress)
+      @student, status = UpdateStudentProgressContext.call(user, progress)
+      flash[:notice] = "You can only proceed to the next part." unless status == :success
       redirect_to student_url(@student)
     else
       render template: "students/unknown"
